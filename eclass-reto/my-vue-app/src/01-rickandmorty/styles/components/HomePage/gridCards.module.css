@@ -2,6 +2,7 @@
   padding: 20px;
   display: grid;
   width: 100%;
+
 }
 
 .data_list{
@@ -9,7 +10,7 @@
   grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
   gap: 20px;
   width: 100%;
-
+  min-height: 1400px;
 }
 
 .data_item{
@@ -17,6 +18,7 @@
   border: 1px solid black;
   border-radius: 8px;
   position: relative;
+  height: 350px;
 }
 .add_favorite_icon{
   background-color: white;
