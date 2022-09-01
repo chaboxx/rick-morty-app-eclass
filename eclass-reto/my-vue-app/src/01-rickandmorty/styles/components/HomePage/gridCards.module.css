@@ -7,10 +7,12 @@
 
 .data_list{
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+  grid-template-rows: repeat(auto-fill,minmax(350px,1fr));
   gap: 20px;
   width: 100%;
   min-height: 1400px;
+
 }
 
 .data_item{
@@ -19,6 +21,7 @@
   border-radius: 8px;
   position: relative;
   height: 350px;
+
 }
 .add_favorite_icon{
   background-color: white;

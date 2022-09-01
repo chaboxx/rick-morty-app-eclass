@@ -27,7 +27,10 @@ export const GridCards : FC<Props> = ({page}) => {
     }
   });
   const dispatch : AppDispatch = useDispatch();
-
+  const handleSetFavorite = ( e: React.MouseEvent<HTMLDivElement, MouseEvent>, id : string )=>{
+    e.stopPropagation();
+    dispatch(setFavorites(id));
+  }
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,7 +63,7 @@ export const GridCards : FC<Props> = ({page}) => {
               })}
             >
               <div
-                onClick={()=>dispatch(setFavorites(element.id))}
+                onClick={(e)=>handleSetFavorite(e,element.id)}
                 className={[styles.add_favorite_icon , favorites.includes( element.id ) ? styles.add_favorite_icon_active : "" ].join(" ")}
               >
                 <span >
