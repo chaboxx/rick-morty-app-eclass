@@ -7,11 +7,12 @@ import { getData } from '../reducers/rickMortyAppReducer';
 export interface RickMortyInitalState{
 
   favorites : string[];
-
+  page : number;
 }
 
 const initialState: RickMortyInitalState = {
   favorites : [],
+  page : 1,
 };
 
 
@@ -19,6 +20,10 @@ const initialState: RickMortyInitalState = {
 interface SetFavoritesAction {
   payload: string; //ID Character
   type: string;
+}
+interface SetCurrentPage {
+  payload : number;
+  type : string;
 }
 export const rickMorySlice = createSlice({
   name: 'rickMortyData',
@@ -44,6 +49,9 @@ export const rickMorySlice = createSlice({
 
       localStorage.setItem("favorites",state.favorites.join(","));
     },
+    setCurrentPage( state : RickMortyInitalState , action : SetCurrentPage ){
+      state.page = action.payload;
+    }
   },
   extraReducers : (builder)=> {
     builder.addCase(getData.pending,(state : RickMortyInitalState ,action)=>{
@@ -62,6 +70,6 @@ export const rickMorySlice = createSlice({
 })
 
 
-export const { setInitalState, setFavorites } = rickMorySlice.actions;
+export const { setInitalState, setFavorites, setCurrentPage } = rickMorySlice.actions;
 
 export default rickMorySlice.reducer;

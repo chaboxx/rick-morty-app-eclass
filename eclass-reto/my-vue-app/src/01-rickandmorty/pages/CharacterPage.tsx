@@ -6,8 +6,9 @@ import { getCharacterData } from '../apollo/querys';
 
 import { DataCharacter } from '../interfaces/character';
 
-import styles from "../styles/pages/characterPage.module.css";
 import { LoadingComponent } from '../components/ui/LoadingComponent';
+
+import styles from "../styles/pages/characterPage.module.css";
 
 export const CharacterPage : FC = () => {
 
@@ -69,7 +70,7 @@ export const CharacterPage : FC = () => {
             </p>
           </div>
           <p 
-            className={ data!.character.episode.map(episode=>episode.name).join(", ").length > 640 ? "show" : "hide" }
+            className={[ data!.character.episode.map(episode=>episode.name).join(", ").length > 640 ? "show pointer" : "hide" , styles.ver_text ].join(" ")}
             onClick={handleVerMas}
           >
             Ver mas...

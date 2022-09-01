@@ -14,12 +14,16 @@ import { setFavorites } from '../../store/slices/rickMortyAppSlice';
 
 import styles from "../../styles/components/HomePage/gridCards.module.css";
 
-export const GridCards : FC = () => {
+interface Props{
+  page : number;
+}
+
+export const GridCards : FC<Props> = ({page}) => {
   
   const { favorites }  = useSelector((state : RootState) => state.rickMorty );
   const { loading, error, data , refetch } = useQuery<Data>(getDataQuery,{
     variables : {
-      page : 1,
+      page,
     }
   });
   const dispatch : AppDispatch = useDispatch();

@@ -33,3 +33,14 @@ export const getCharacterData = gql`
   }   
 `;
 
+export const getNumberPagesQuery = gql`
+  query getNumberPages( $page: Int! ) {
+    characters(page: $page){
+      info{
+        pages
+      }
+  } 
+  
+}`;
+
+
