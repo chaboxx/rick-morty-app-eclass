@@ -1,13 +1,15 @@
 .grid_cards_container{
   padding: 20px;
   display: grid;
-  justify-content: center;
+  width: 100%;
 }
 
 .data_list{
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
   gap: 20px;
+  width: 100%;
+
 }
 
 .data_item{
@@ -20,7 +22,7 @@
 .img_item{
   max-width: 100%;
   border-radius: 8px 8px 0 0;
-
+  display: grid;
 }
 
 .information_item_container{

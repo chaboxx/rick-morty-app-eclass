@@ -1,5 +1,6 @@
 
 .home_page_container {
-  max-width: 1600px;
   margin-top: 50px;
+  display: grid;
+
 }
