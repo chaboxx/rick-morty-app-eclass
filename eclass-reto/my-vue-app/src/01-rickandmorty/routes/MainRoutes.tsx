@@ -9,6 +9,7 @@ import { AppDispatch } from '../store';
 import { useDispatch } from 'react-redux';
 import { setInitalState } from '../store/slices/rickMortyAppSlice';
 import { CharacterPage } from '../pages/CharacterPage';
+import { FavoritesPage } from '../pages/FavoritesPage';
 
 export const MainRoutes : FC= () => {
  
@@ -19,7 +20,6 @@ export const MainRoutes : FC= () => {
   }, [])
   return (
     <>
-      <Navbar/>
       <BrowserRouter>
 
         {/* 01-rickandmortyapp */}
@@ -27,6 +27,7 @@ export const MainRoutes : FC= () => {
           <Route path="/">
               <Route index element={<HomePage/>}/>
               <Route path="character/:id" element={<CharacterPage/>} />
+              <Route path="favorites" element={<FavoritesPage/>} />
           </Route>
         </Routes>
         {/* ... */}
