@@ -21,3 +21,11 @@ li{
 .pointer{
   cursor: pointer;
 }
+
+.show{
+  display: grid;
+}
+
+.hide {
+  display: none;
+}

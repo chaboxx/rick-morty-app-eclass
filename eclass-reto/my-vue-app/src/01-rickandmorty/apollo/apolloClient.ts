@@ -8,19 +8,21 @@ const client = new ApolloClient({
 });
 
 
-client.query({
-  query: gql`
-    query getData($page:Number!) {
-      results {
-        id
-        name
-        image
-      }
-    }
-  `,
+// client.query({
+//   query: gql`
+//     query getData($page:Number!) {
+//       results {
+//         id
+//         name
+//         image
+//       }
+//     }
+//   `,
 
   
-}).then((result) => console.log(result));
+
+  
+// })
 
 
 export default client;

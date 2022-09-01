@@ -8,6 +8,7 @@ import { Navbar } from '../components/ui/Navbar';
 import { AppDispatch } from '../store';
 import { useDispatch } from 'react-redux';
 import { setInitalState } from '../store/slices/rickMortyAppSlice';
+import { CharacterPage } from '../pages/CharacterPage';
 
 export const MainRoutes : FC= () => {
  
@@ -20,12 +21,16 @@ export const MainRoutes : FC= () => {
     <>
       <Navbar/>
       <BrowserRouter>
-        <Routes>
 
+        {/* 01-rickandmortyapp */}
+        <Routes>
           <Route path="/">
               <Route index element={<HomePage/>}/>
+              <Route path="character/:id" element={<CharacterPage/>} />
           </Route>
-        </Routes>    
+        </Routes>
+        {/* ... */}
+        
       </BrowserRouter>
     </>
   )

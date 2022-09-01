@@ -1,0 +1,71 @@
+.character_page_container{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  gap : 40px;
+  padding: 20px;
+
+}
+
+.image_container{
+  display: grid;
+  align-self: start;
+  margin-top: 30px;
+}
+.image{
+  height: 400px;
+  width: auto;
+  border-radius: 10px;
+}
+
+.character_info_container{
+
+  flex: 1;
+}
+
+.character_status{
+  background-color: darkgreen;
+  max-width: max-content;
+  padding: 5px 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.character_name{
+  font-size: 32px;
+  margin-top: 10px;
+
+}
+
+.episodes_info_container{
+  margin-top: 18px;
+
+}
+
+.episodes_label{
+  font-size: 24px;
+  font-weight: 500;
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.episodes{
+  margin-top: 8px;
+  max-width: 80%;
+  max-height: calc(22px * 6);
+  line-height: 22px;
+  overflow-y: hidden;
+  padding-bottom: 3px;
+}
+
+.episodes_text{
+  font-size: 18px;
+  font-weight: 400;
+  
+}
+
+.created{
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 600;
+}
