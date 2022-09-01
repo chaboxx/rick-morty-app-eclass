@@ -6,9 +6,9 @@ import { getCharacterData } from '../apollo/querys';
 
 import { DataCharacter } from '../interfaces/character';
 
-import { LoadingComponent } from '../components/ui/LoadingComponent';
 
 import styles from "../styles/pages/characterPage.module.css";
+import { LoadingComponent } from '../components/CharacterPage/LoadingComponents';
 
 export const CharacterPage : FC = () => {
 

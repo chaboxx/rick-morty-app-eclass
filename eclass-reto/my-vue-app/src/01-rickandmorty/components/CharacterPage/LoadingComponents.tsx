@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import styles from "../../styles/components/ui/loadingComponent.module.css";
+import styles from "../../styles/components/CharacterPage/loadingComponent.module.css";
 
 interface Props {
   component : "GridCards" | "CharacterPage";

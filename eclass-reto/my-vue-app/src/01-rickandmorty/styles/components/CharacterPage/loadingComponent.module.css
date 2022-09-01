@@ -1,0 +1,14 @@
+.loading_component_container{
+  
+  margin-top: 90px;
+  display: grid;
+  justify-items: center;
+
+  
+
+}
+
+.loading_text{
+  color : darkgreen;
+  font-size: 30px;
+}

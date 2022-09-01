@@ -6,13 +6,13 @@ import { AppDispatch, RootState } from '../../store';
 import { useQuery } from '@apollo/client';
 import { getDataQuery } from '../../apollo/querys';
 
-import { LoadingComponent } from '../ui/LoadingComponent';
 
 import { Data } from '../../interfaces/characters';
 
 import { setFavorites } from '../../store/slices/rickMortyAppSlice';
 
 import styles from "../../styles/components/HomePage/gridCards.module.css";
+import { LoadingComponent } from './LoadingComponent';
 
 interface Props{
   page : number;
