@@ -1,6 +1,6 @@
-import { FC, useLayoutEffect } from "react";
+import { FC } from "react";
 
-import { Provider } from "react-redux";
+import { Provider} from "react-redux";
 
 import { MainRoutes } from "./routes/MainRoutes";
 
@@ -13,12 +13,7 @@ import "../index.css";
 import "./styles/class/index.css";
 
 export const RickAndMortyApp : FC = () => {
-  useLayoutEffect(() => {
-    
-
-
-  }, [])
-
+  
   return (
     <ApolloProvider client={client}>
       <Provider store={store}>
