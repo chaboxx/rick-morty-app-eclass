@@ -1,13 +1,13 @@
 
 .data_item{
   display: grid;
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0, 0.1);
   border-radius: 8px;
   position: relative;
   height: 350px;
   width: 300px;
   justify-self: center;
-
+  box-shadow: 1px 1px 3px 1px rgb(0, 0, 0, 0.1);
 }
 .add_favorite_icon{
   background-color: white;
