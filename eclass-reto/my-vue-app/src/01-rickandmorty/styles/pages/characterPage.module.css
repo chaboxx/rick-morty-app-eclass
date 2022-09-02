@@ -68,6 +68,20 @@
   font-size: 20px;
 
 }
+
+.button_container{
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.button_add_favorite{
+  background-color: darkorange;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 7px 10px;
+  border-radius: 7px;
+  font-size: 18px;
+}
 .created{
   margin-top: 30px;
   font-size: 16px;

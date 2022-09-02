@@ -1,6 +1,9 @@
 import { FC, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Navbar } from '../components/ui/Navbar';
+import { LoadingComponent } from '../components/CharacterPage/LoadingComponents';
+
 import { useQuery } from '@apollo/client';
 import { getCharacterData } from '../apollo/querys';
 
@@ -8,18 +11,22 @@ import { DataCharacter } from '../interfaces/character';
 
 
 import styles from "../styles/pages/characterPage.module.css";
-import { LoadingComponent } from '../components/CharacterPage/LoadingComponents';
-import { Navbar } from '../components/ui/Navbar';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFavorites } from '../store/slices/rickMortyAppSlice';
+import { RootState } from '../store';
+
 
 export const CharacterPage : FC = () => {
 
   const { id } = useParams();
-
+  const { favorites } = useSelector((store:RootState)=>store.rickMorty);
   const { loading , error , data , refetch } = useQuery<DataCharacter>(getCharacterData,{
     variables : {
       id,
     },
   });
+
+  const dispatch = useDispatch();
   
   useEffect(() => {
     if ( !error ){
@@ -78,6 +85,16 @@ export const CharacterPage : FC = () => {
             >
               Ver mas...
             </p>
+          </div>
+          <div className={styles.button_container}>
+            <button
+              onClick={()=>dispatch(setFavorites(id!))}
+              className={[ styles.button_add_favorite, "pointer" ].join(" ")}
+            >
+              {
+                favorites.includes(id!) ? "Delete Favorite" : "Add Favorite"
+              }
+            </button>
           </div>
           <div className={styles.created}>Created : {new Date(data?.character.created!).toLocaleDateString("es-PE")}</div>
         </div>

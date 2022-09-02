@@ -10,7 +10,7 @@ export const Navbar : FC = () => {
   const { favorites }  = useSelector((state : RootState) => state.rickMorty );
   
   const navigate = useNavigate();
-
+  
   return (
     <>
       <nav className={styles.navbar_container}>

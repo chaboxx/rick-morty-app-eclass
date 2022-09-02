@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getFavoritesQuery } from '../apollo/querys';
 import { CharacterCard } from '../components/ui/CharacterCard';
@@ -19,7 +19,23 @@ export const FavoritesPage : FC = () => {
     }
   });
   
-  console.log({loading,error,data});
+  
+  useEffect(() => {
+    if ( !error ){
+      return;
+    }
+    
+    refetch({
+      ids : favorites,
+    })
+    
+  }, [error])
+  
+  if( loading ){
+    return <h1 style={{
+      marginTop : "90px"
+    }}> Cargando... </h1>
+  } 
 
   return (
     <>
