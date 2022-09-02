@@ -1,7 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { Characters, Data, Result } from '../../interfaces/characters';
-import { getData } from '../reducers/rickMortyAppReducer';
 
 
 export interface RickMortyInitalState{
@@ -52,20 +49,6 @@ export const rickMorySlice = createSlice({
     setCurrentPage( state : RickMortyInitalState , action : SetCurrentPage ){
       state.page = action.payload;
     }
-  },
-  extraReducers : (builder)=> {
-    builder.addCase(getData.pending,(state : RickMortyInitalState ,action)=>{
-      console.log("pending");
-    }),
-    builder.addCase(getData.fulfilled,(state : RickMortyInitalState ,action : PayloadAction<Data>)=>{
-      console.log("fullfilled");
-
-    }),
-    builder.addCase(getData.rejected,(state : RickMortyInitalState ,action)=>{
-      console.log("rejected");
-
-    })
-
   }
 })
 

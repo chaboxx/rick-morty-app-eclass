@@ -1,7 +1,4 @@
 import { FC, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../store';
 
 import { useQuery } from '@apollo/client';
 import { getDataQuery } from '../../apollo/querys';
@@ -9,11 +6,13 @@ import { getDataQuery } from '../../apollo/querys';
 
 import { Data } from '../../interfaces/characters';
 
-import { setFavorites } from '../../store/slices/rickMortyAppSlice';
 
-import styles from "../../styles/components/HomePage/gridCards.module.css";
 import { LoadingComponent } from './LoadingComponent';
 import { CharacterCard } from '../ui/CharacterCard';
+
+
+import styles from "../../styles/components/HomePage/gridCards.module.css";
+
 
 interface Props{
   page : number;
@@ -27,9 +26,6 @@ export const GridCards : FC<Props> = ({page}) => {
       page,
     }
   });
-  const dispatch : AppDispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if ( !error ){

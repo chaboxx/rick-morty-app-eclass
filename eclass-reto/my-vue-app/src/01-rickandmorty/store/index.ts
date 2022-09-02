@@ -1,4 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { connect } from 'react-redux';
+import { RickAndMortyApp } from '..';
 import rickMortySlice from "./slices/rickMortyAppSlice";
 
 const store = configureStore({

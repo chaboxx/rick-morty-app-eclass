@@ -1,15 +1,12 @@
 import { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { useNavigate } from 'react-router-dom';
-import { Result } from '../../interfaces/characters';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { setFavorites } from '../../store/slices/rickMortyAppSlice';
 
+import { useNavigate } from 'react-router-dom';
 
-
-
-
+import { Result } from '../../interfaces/characters';
 
 
 interface Props {

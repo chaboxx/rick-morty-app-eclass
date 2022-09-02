@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Provider} from "react-redux";
+import { connect, Provider} from "react-redux";
 
 import { MainRoutes } from "./routes/MainRoutes";
 
@@ -15,11 +15,16 @@ import "./styles/class/index.css";
 export const RickAndMortyApp : FC = () => {
   
   return (
-    <ApolloProvider client={client}>
-      <Provider store={store}>
+    
+ 
 
-        <MainRoutes /> 
+      <Provider store={store}>
+        <ApolloProvider client={client}>
+          <MainRoutes /> 
+        </ApolloProvider>
       </Provider>
-    </ApolloProvider>
+    
   )
 }
+
+const connected = connect(store as any)(RickAndMortyApp);

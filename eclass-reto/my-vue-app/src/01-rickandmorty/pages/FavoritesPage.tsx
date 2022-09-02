@@ -1,11 +1,15 @@
-import { useQuery } from '@apollo/client';
-import { FC, useEffect } from 'react';
+import { FC, useEffect ,useMemo } from 'react';
+
 import { useSelector } from 'react-redux';
+
+import { InMemoryCache, useQuery } from '@apollo/client';
 import { getFavoritesQuery } from '../apollo/querys';
+import { RootState } from '../store';
+
 import { CharacterCard } from '../components/ui/CharacterCard';
 import { Navbar } from '../components/ui/Navbar';
+
 import { DataCharacterById } from '../interfaces/charactersById';
-import { RootState } from '../store';
 
 
 import styles from "../styles/pages/favoritesPage.module.css";
@@ -13,12 +17,34 @@ import styles from "../styles/pages/favoritesPage.module.css";
 export const FavoritesPage : FC = () => {
   const { favorites } = useSelector((store: RootState)=>store.rickMorty);
 
-  const { loading, error, data , refetch } = useQuery<DataCharacterById>(getFavoritesQuery,{
+  // const favorites = useMemo(() =>{
+  //   const { favorites } = useSelector((store: RootState)=>store.rickMorty);
+  //   return favorites;
+
+  // } , [])
+
+  const { loading, error, data , refetch ,called ,client } = useQuery<DataCharacterById>(getFavoritesQuery,{
     variables : {
       ids : favorites,
+    },
+    fetchPolicy : "cache-first",
+    onCompleted: (data) =>{
+      console.log({data});
     }
+    
   });
   
+  useEffect(() => {
+    // 
+  }, [data])
+  
+  useEffect(() => {
+
+    refetch({
+      ids : favorites,
+    })
+    
+  }, [favorites])
   
   useEffect(() => {
     if ( !error ){

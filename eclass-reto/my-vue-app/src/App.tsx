@@ -1,14 +1,12 @@
-import { RickAndMortyApp } from "./01-rickandmorty";
 
+import { AppRoutes } from "./routes/routes";
 
 
 
 function App() {
 
   return (
-    <div>
-      <RickAndMortyApp/>
-    </div>
+    <AppRoutes/>
 
   )
 }

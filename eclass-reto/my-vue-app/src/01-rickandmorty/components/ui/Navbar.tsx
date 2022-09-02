@@ -8,7 +8,6 @@ import styles from "../../styles/components/ui/navbar.module.css";
 
 export const Navbar : FC = () => {
   const { favorites }  = useSelector((state : RootState) => state.rickMorty );
-  
   const navigate = useNavigate();
   
   return (
