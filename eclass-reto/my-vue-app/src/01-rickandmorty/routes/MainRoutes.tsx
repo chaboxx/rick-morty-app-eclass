@@ -27,9 +27,7 @@ export const MainRoutes : FC= () => {
         <Route index element={<HomePage/>}/>
         <Route path="character/:id" element={<CharacterPage/>} />
         <Route path="favorites" element={<FavoritesPage/>} />
-        
       </Route>
-            
         
     </Routes>
     

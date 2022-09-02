@@ -10,7 +10,7 @@ import client from "./apollo/apolloClient";
 import store from "./store";
 
 import "../index.css";
-import "./styles/class/index.css";
+
 
 export const RickAndMortyApp : FC = () => {
   
