@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MutableRefObject, useRef } from "react";
 import { useSelector } from "react-redux";
 
 import { GridCards } from "../components/HomePage/GridCards";
@@ -12,10 +12,16 @@ export const HomePage : FC = () => {
 
   const { page } = useSelector((store : RootState )=>store.rickMorty )
 
+  const homePageStart = useRef<HTMLDivElement>(null);
+
+  const handleNavigateToStart = () =>{
+    homePageStart.current?.scrollIntoView();
+  }
+
   return (
     <>
-      <Navbar/>
-      <div className={styles.home_page_container}>
+      <Navbar handleNavigateToStart={handleNavigateToStart}/>
+      <div ref={homePageStart} className={styles.home_page_container}>
         <GridCards page={page}/>
         <PagesComponent/>
       </div>

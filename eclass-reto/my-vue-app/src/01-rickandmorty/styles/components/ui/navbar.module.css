@@ -25,6 +25,10 @@
   font-weight: 500;
 }
 
+.navbar_item_active{
+  color: blueviolet;
+
+}
 .navbar_item:hover{
   color: blueviolet;
 }

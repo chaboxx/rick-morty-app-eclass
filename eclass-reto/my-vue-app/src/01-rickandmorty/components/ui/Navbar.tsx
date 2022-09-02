@@ -1,14 +1,23 @@
 import { FC } from 'react';
+
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store';
 
 
 import styles from "../../styles/components/ui/navbar.module.css";
 
-export const Navbar : FC = () => {
+interface Props{
+  handleNavigateToStart : () => void;
+}
+
+export const Navbar : FC<Props> = ({handleNavigateToStart}) => {
+  
   const { favorites }  = useSelector((state : RootState) => state.rickMorty );
+  
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   
   return (
     <>
@@ -18,7 +27,8 @@ export const Navbar : FC = () => {
             onClick={()=>navigate({
               pathname : "/"
             })}
-            className={[ styles.navbar_item ,"pointer" ].join(" ")}
+            className={[ styles.navbar_item ,"pointer" , pathname === "/" ? styles.navbar_item_active : "" ].join(" ")}
+            onDoubleClick={()=>handleNavigateToStart()}
           >
             Home 
           </li>
@@ -26,7 +36,7 @@ export const Navbar : FC = () => {
             onClick={()=>navigate({
               pathname : "/favorites"
             })}
-            className={[ styles.navbar_item , "pointer" ].join(" ")}
+            className={[ styles.navbar_item , "pointer", pathname === "/favorites" ? styles.navbar_item_active : "" ].join(" ")}
           >
             Favoritos { `(${ favorites.length })`} 
           </li>
