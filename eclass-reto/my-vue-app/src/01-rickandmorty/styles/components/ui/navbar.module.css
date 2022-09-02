@@ -24,3 +24,7 @@
   font-size: 20px;
   font-weight: 500;
 }
+
+.navbar_item:hover{
+  color: blueviolet;
+}

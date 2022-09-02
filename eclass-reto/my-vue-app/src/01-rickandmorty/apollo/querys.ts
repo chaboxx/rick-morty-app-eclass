@@ -43,4 +43,15 @@ export const getNumberPagesQuery = gql`
   
 }`;
 
+export const getFavoritesQuery = gql`
+  query getFavorites( $ids: [ID!]! ) {
+    charactersByIds(ids : $ids){
+      id
+      name
+      image
+    }
+  } 
+  
+`;
+
 

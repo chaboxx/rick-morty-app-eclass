@@ -15,14 +15,19 @@ export const Navbar : FC = () => {
     <>
       <nav className={styles.navbar_container}>
         <ul className={styles.navbar_items}>
-          <li className={styles.navbar_item}>
+          <li 
+            onClick={()=>navigate({
+              pathname : "/"
+            })}
+            className={[ styles.navbar_item ,"pointer" ].join(" ")}
+          >
             Home 
           </li>
           <li
             onClick={()=>navigate({
-              pathname : "favorites"
+              pathname : "/favorites"
             })}
-            className={styles.navbar_item}
+            className={[ styles.navbar_item , "pointer" ].join(" ")}
           >
             Favoritos { `(${ favorites.length })`} 
           </li>
