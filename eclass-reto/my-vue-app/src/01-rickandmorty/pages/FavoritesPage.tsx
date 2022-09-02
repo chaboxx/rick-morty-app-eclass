@@ -17,26 +17,12 @@ import styles from "../styles/pages/favoritesPage.module.css";
 export const FavoritesPage : FC = () => {
   const { favorites } = useSelector((store: RootState)=>store.rickMorty);
 
-  // const favorites = useMemo(() =>{
-  //   const { favorites } = useSelector((store: RootState)=>store.rickMorty);
-  //   return favorites;
-
-  // } , [])
-
-  const { loading, error, data , refetch ,called ,client } = useQuery<DataCharacterById>(getFavoritesQuery,{
+  const { loading, error, data , refetch } = useQuery<DataCharacterById>(getFavoritesQuery,{
     variables : {
-      ids : favorites,
+      ids : favorites, 
     },
     fetchPolicy : "cache-first",
-    onCompleted: (data) =>{
-      console.log({data});
-    }
-    
   });
-  
-  useEffect(() => {
-    // 
-  }, [data])
   
   useEffect(() => {
 
@@ -67,7 +53,12 @@ export const FavoritesPage : FC = () => {
     <>
       <Navbar/>
       <div className={styles.favorites_page_container}>
+        
         {
+          favorites.length === 0 
+          ?
+           <h4>No hay Favoritos</h4>
+          :
           data?.charactersByIds.map(character=>(
             <CharacterCard key={character.id}  character={character}/>
           ))

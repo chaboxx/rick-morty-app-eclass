@@ -28,11 +28,11 @@ export const rickMorySlice = createSlice({
   reducers: {
     setInitalState( state : RickMortyInitalState ){
       const favorites = localStorage.getItem("favorites")?.split(",");
-
+      console.log({favorites});
       if ( favorites && favorites.length > 0 ){
         state.favorites = favorites;
       }
-
+      
     },
     setFavorites( state : RickMortyInitalState , action  : SetFavoritesAction ){
       

@@ -12,4 +12,5 @@ export interface CharactersByID {
   id:    string;
   name:  string;
   image: string;
+  
 }

@@ -1,4 +1,4 @@
-import { FC, useLayoutEffect } from 'react';
+import { FC, useEffect, useLayoutEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,7 +16,7 @@ export const MainRoutes : FC= () => {
  
   const dispatch = useDispatch();
   
-  useLayoutEffect(() => {
+  useEffect(() => {
     dispatch(setInitalState());
   }, [])
 
