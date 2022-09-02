@@ -10,6 +10,7 @@ import { DataPages } from '../../interfaces/pages';
 
 import styles from "../../styles/components/HomePage/pagesComponent.module.css";
 import { RootState } from '../../store';
+import { usePagination } from '../../hooks/usePagination';
 
 export const PagesComponent : FC = () => {
   
@@ -21,6 +22,8 @@ export const PagesComponent : FC = () => {
       page : 1,
     }
   });
+
+  const { links, backPage, nextPage, setInitalPage, setFinalPage } = usePagination(data?.characters.info.pages!);
 
   useEffect(() => {
 
@@ -41,17 +44,41 @@ export const PagesComponent : FC = () => {
   return (
     <div className={styles.pages_component_container}>
       <ul className={styles.pages_list}>
+        <li
+          onClick={()=>backPage()}
+          className={[ styles.page_item, "pointer"].join(" ")}
+        >
+          {"<"}
+        </li>
+        <li
+          onClick={()=>setInitalPage()}
+          className={[ styles.page_item, "pointer", page > 5 ? "show" : "hide"  ].join(" ")}
+        >
+          ...
+        </li>
         {
-          [...new Array(data?.characters.info.pages)].map((_,index)=>(
+          links.map((link)=>(
             <li
-              className={[ styles.page_item, page ===index+1 ? styles.page_item_active : "", "pointer" ].join(" ")} 
-              key={index} 
-              onClick={()=>dispatch(setCurrentPage(index+1))}
+              className={[ styles.page_item, page ===link ? styles.page_item_active : "", "pointer" ].join(" ")} 
+              key={link} 
+              onClick={()=>dispatch(setCurrentPage(link))}
             >
-              {index+1}
+              {link}
             </li>
           )) 
         }
+        <li
+          onClick={()=>setFinalPage()}
+          className={[ styles.page_item, "pointer", page < 37 ? "show" : "hide" ].join(" ")}
+        >
+          ...
+        </li>
+        <li
+          onClick={()=>nextPage()}
+          className={[ styles.page_item, "pointer" ].join(" ")}
+        >
+          {">"}
+        </li>
       </ul>
     </div>
   )
