@@ -1,6 +1,6 @@
-import { FC, useEffect, useLayoutEffect } from 'react';
+import { FC, useLayoutEffect } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { setInitalState } from '../store/slices/rickMortyAppSlice';
 
@@ -9,14 +9,13 @@ import { Routes ,Route } from "react-router-dom";
 import { HomePage } from '../pages/HomePage';
 import { CharacterPage } from '../pages/CharacterPage';
 import { FavoritesPage } from '../pages/FavoritesPage';
-import { RootState } from '../store';
 
 
 export const MainRoutes : FC= () => {
  
   const dispatch = useDispatch();
   
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(setInitalState());
   }, [])
 

@@ -56,16 +56,18 @@ export const FavoritesPage : FC = () => {
     <>
       <Navbar handleNavigateToStart={()=>{}}/>
       <div className={styles.favorites_page_container}>
-        
-        {
-          favorites.length === 0 
-          ?
-           <h4>No hay Favoritos</h4>
-          :
-          data?.charactersByIds.map(character=>(
-            <CharacterCard key={character.id}  character={character}/>
-          ))
-        }
+        <div className={styles.favorites_page_content}>
+
+          {
+            favorites.length === 0 
+            ?
+            <h4>No hay Favoritos</h4>
+            :
+            data?.charactersByIds.map(character=>(
+              <CharacterCard key={character.id}  character={character}/>
+              ))
+          }
+        </div>
       </div>
     </>
   )
