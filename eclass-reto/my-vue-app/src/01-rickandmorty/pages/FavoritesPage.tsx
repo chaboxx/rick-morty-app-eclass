@@ -2,7 +2,7 @@ import { FC, useEffect ,useMemo } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { InMemoryCache, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { getFavoritesQuery } from '../apollo/querys';
 import { RootState } from '../store';
 
@@ -17,12 +17,15 @@ import styles from "../styles/pages/favoritesPage.module.css";
 export const FavoritesPage : FC = () => {
   const { favorites } = useSelector((store: RootState)=>store.rickMorty);
 
-  const { loading, error, data , refetch } = useQuery<DataCharacterById>(getFavoritesQuery,{
+  const { loading, error, data , refetch ,client } = useQuery<DataCharacterById>(getFavoritesQuery,{
     variables : {
       ids : favorites, 
     },
     fetchPolicy : "cache-first",
+    
   });
+  
+
   
   useEffect(() => {
 
