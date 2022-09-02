@@ -22,8 +22,11 @@ export const HomePage : FC = () => {
     <>
       <Navbar handleNavigateToStart={handleNavigateToStart}/>
       <div ref={homePageStart} className={styles.home_page_container}>
-        <GridCards page={page}/>
-        <PagesComponent/>
+        <div className={styles.home_page_content}>
+
+          <GridCards page={page}/>
+          <PagesComponent/>
+        </div>
       </div>
     </>
   )

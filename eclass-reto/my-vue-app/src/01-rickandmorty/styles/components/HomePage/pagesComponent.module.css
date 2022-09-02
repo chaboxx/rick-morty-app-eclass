@@ -1,5 +1,7 @@
 .pages_component_container{
-  padding: 0 20px;
+  padding: 20px;
+  display: grid;
+  margin-left: 20px;
 }
 .pages_list{
   display: flex;
@@ -16,3 +18,22 @@
 .page_item_active{
   background-color: red;
 }
+
+/* Media Querys */
+
+@media screen  and ( max-width : 768px ){
+  .pages_component_container{
+    justify-self: center;
+    margin-left: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* End Media Querys */

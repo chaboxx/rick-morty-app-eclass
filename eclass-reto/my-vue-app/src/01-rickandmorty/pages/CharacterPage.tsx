@@ -62,7 +62,7 @@ export const CharacterPage : FC = () => {
   
   return (
     <>
-      <Navbar/>
+      <Navbar handleNavigateToStart={()=>{}}/>
       <main className={styles.character_page_container}>
         <div className={styles.image_container}>
           <img className={styles.image} src={data?.character.image} alt={data?.character.name} />

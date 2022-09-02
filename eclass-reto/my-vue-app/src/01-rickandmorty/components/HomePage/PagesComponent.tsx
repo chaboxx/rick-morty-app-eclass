@@ -1,16 +1,17 @@
 import { FC, useEffect } from 'react';
 
-import { useQuery } from '@apollo/client';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from '../../store/slices/rickMortyAppSlice';
+import { RootState } from '../../store';
 
+import { useQuery } from '@apollo/client';
 import { getNumberPagesQuery } from '../../apollo/querys';
+
+import { usePagination } from '../../hooks/usePagination';
+
 import { DataPages } from '../../interfaces/pages';
 
-
 import styles from "../../styles/components/HomePage/pagesComponent.module.css";
-import { RootState } from '../../store';
-import { usePagination } from '../../hooks/usePagination';
 
 export const PagesComponent : FC = () => {
   

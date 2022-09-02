@@ -54,7 +54,7 @@ export const FavoritesPage : FC = () => {
 
   return (
     <>
-      <Navbar/>
+      <Navbar handleNavigateToStart={()=>{}}/>
       <div className={styles.favorites_page_container}>
         
         {

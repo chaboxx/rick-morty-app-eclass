@@ -2,5 +2,10 @@
 .home_page_container {
   padding-top: 50px;
   display: grid;
+}
 
+.home_page_content{
+  max-width: 1600px;
+  justify-self: center;
+  width: 100%;
 }

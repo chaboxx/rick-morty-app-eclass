@@ -7,6 +7,7 @@
   height: 350px;
   width: 300px;
   justify-self: center;
+
 }
 .add_favorite_icon{
   background-color: white;
@@ -29,8 +30,11 @@
   background-color: chartreuse;
 }
 
+.image_container{
+  display: grid;
+}
 .img_item{
-  max-width: 100%;
+  width: 300px;
   border-radius: 8px 8px 0 0;
   display: grid;
 }
@@ -41,3 +45,44 @@
 .title{
   margin-top: 8px;
 }
+
+/* Media Query */
+
+@media screen and ( max-width : 768px ){
+  .data_item{
+    width: 250px;
+
+  }
+  .img_item{
+    width: 250px;
+    height: 300px;
+  
+  }
+}
+
+
+@media screen and ( max-width : 560px ){
+  .data_item{
+    width: 210px;
+
+
+  }
+  .img_item{
+    width: 210px;
+    
+  
+  }
+}
+
+@media screen and ( max-width : 460px ){
+  .data_item{
+    width: 150px;
+    height: 250px;
+  }
+  .img_item{
+    width: 150px;
+    height: 200px;
+  }
+}
+
+/* End Media Query */

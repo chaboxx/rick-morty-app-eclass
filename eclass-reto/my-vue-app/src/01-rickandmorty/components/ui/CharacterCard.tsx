@@ -44,7 +44,7 @@ export const CharacterCard : FC<Props> = ({character}) => {
           }
         </span>
       </div>
-      <div>
+      <div className={styles.image_container}>
         <img draggable={false} className={styles.img_item} src={character.image} alt={character.name} />
 
       </div>

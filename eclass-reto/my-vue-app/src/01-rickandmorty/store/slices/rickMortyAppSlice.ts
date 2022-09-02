@@ -39,9 +39,10 @@ export const rickMorySlice = createSlice({
     },
     setFavorites( state : RickMortyInitalState , action  : SetFavoritesAction ){
       
+
       const isRepeted = state.favorites.includes( action.payload );
       
-      if ( !isRepeted) {
+      if ( !isRepeted ) {
         state.favorites.push(action.payload);
       }else{
         state.favorites = state.favorites.filter( favorite => favorite !== action.payload );
