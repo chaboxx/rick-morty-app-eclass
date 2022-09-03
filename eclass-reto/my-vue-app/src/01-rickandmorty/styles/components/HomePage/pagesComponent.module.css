@@ -1,38 +1,43 @@
 .pages_component_container{
   padding: 20px;
   display: grid;
-  margin-left: 20px;
+  
 }
 .pages_list{
+  max-width: 1600px;
   display: flex;
   flex-direction: row;
   gap: 6px;
 }
 .page_item{
   font-size: 20px;
-  background-color: blue;
+  background-color: #232f3e;
   color: white;
   padding: 2px 5px;
   border-radius: 5px;
 }
 .page_item_active{
-  background-color: red;
+  background-color: #0073bb;
 }
 
+
+
 /* Media Querys */
+
+
+@media screen and ( max-width : 1250px ){
+  .pages_list{
+    justify-self: center;
+  }
+}
 
 @media screen  and ( max-width : 768px ){
   .pages_component_container{
     justify-self: center;
     margin-left: 0;
   }
+  
 }
-
-
-
-
-
-
 
 
 

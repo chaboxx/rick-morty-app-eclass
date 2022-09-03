@@ -90,10 +90,10 @@ export const CharacterPage : FC = () => {
             <div className={styles.button_container}>
               <button
                 onClick={()=>dispatch(setFavorites(id!))}
-                className={[ styles.button_add_favorite, "pointer" ].join(" ")}
+                className={[ styles.button_add_favorite, favorites.includes(id!) ? styles.button_active : styles.button_not_active ,"pointer" ].join(" ")}
               >
                 {
-                  favorites.includes(id!) ? "Delete Favorite" : "Add Favorite"
+                  favorites.includes(id!) ? "Favorite" : "Add Favorite"
                 }
               </button>
             </div>
