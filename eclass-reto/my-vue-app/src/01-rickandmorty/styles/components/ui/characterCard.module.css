@@ -9,26 +9,63 @@
   justify-self: center;
   box-shadow: 1px 1px 3px 1px rgb(0, 0, 0, 0.1);
 }
+
+
+
+/* ICON */
+
 .add_favorite_icon{
-  background-color: white;
-  width: 25px;
-  height: 25px;
+  width: 33px;
+  height: 33px;
   border-radius: 50%;
-  font-size: 20px;
   position: absolute;
   top: 10px;
   right: 10px;
   text-align: center;
 }
-.add_favorite_icon:hover{
-  background-color: crimson;
-  color: white;
+
+.add_favorite_icon_not_active{
+  background-color: white;
+}
+.add_favorite_icon_active{
+  background-color: #eaa523;
+}
+.add_favorite_icon_not_active::before{
+  content: "+";
+  width: 30px;
+  color: black;
+  height: 30px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.add_favorite_icon_active::before{
+  content: "*";
+  width: 30px;
+  color: #f5ead4;
+  height: 30px;
+  font-size: 30px;
+  font-weight: 700;
 }
 
-.add_favorite_icon_active{
-  color: white;
-  background-color: chartreuse;
+.add_favorite_icon_not_active:hover{
+  background-color: #eaa523;
+    
 }
+.add_favorite_icon_active:hover{
+  background-color: white;  
+
+}
+.add_favorite_icon_not_active:hover::before{
+  content: "*";
+  color: #f5ead4;
+}
+.add_favorite_icon_active:hover::before{
+  content: "+";
+  color: black;
+}
+/* END ICON */
+
+
 
 .image_container{
   display: grid;

@@ -35,14 +35,10 @@ export const CharacterCard : FC<Props> = ({character}) => {
     >
       <div
         onClick={(e)=>handleSetFavorite(e,character.id)}
-        className={[styles.add_favorite_icon , favorites.includes( character.id ) ? styles.add_favorite_icon_active : "" ].join(" ")}
+        className={[styles.add_favorite_icon , favorites.includes( character.id ) ? styles.add_favorite_icon_active : styles.add_favorite_icon_not_active ].join(" ")}
       >
-        <span >
-          {
-            favorites.includes( character.id ) ?
-            "*" : "+"
-          }
-        </span>
+        {/* <span className={[ styles.star , favorites.includes( character.id ) ? styles.star_active : styles.star_not_active ].join(" ")}>
+        </span> */}
       </div>
       <div className={styles.image_container}>
         <img draggable={false} className={styles.img_item} src={character.image} alt={character.name} />

@@ -48,7 +48,9 @@ export const FavoritesPage : FC = () => {
   
   if( loading ){
     return <h1 style={{
-      marginTop : "90px"
+      marginTop : "90px",
+      display:"grid",
+      placeItems : "center",
     }}> Cargando... </h1>
   } 
 
