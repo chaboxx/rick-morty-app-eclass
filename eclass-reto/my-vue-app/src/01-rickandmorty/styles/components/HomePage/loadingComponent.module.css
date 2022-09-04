@@ -1,16 +1,27 @@
 
 /* CARTAS DE 350PX Y 4 FILAS => 1400PX */
 .loading_component_container{
-  min-height: 1400px;
   display: grid;
-  place-content: center;
+  width: calc(100% - 20px);
+  padding: 10px;
+}
+
+.loading_component_content{
+  min-height: 1400px;
+  max-width: 1600px;
+  min-width: 300px;
+  border-radius: 7px;
+  width: 100%;
+  justify-self: center;
+  display: grid;
   background-color: rgb(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-bottom: 7px;
-  width: calc(100% - 40px);
+  
 }
 
 .loading_text{
-  color : black;
-  font-size: 30px;
+  align-self: center;
+  justify-self: center;
+  color: black;
+  font-size: 35px;
+  font-size: 600;
 }

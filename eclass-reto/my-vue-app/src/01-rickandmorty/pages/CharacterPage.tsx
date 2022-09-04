@@ -55,52 +55,52 @@ export const CharacterPage : FC = () => {
 
   } 
 
-  if ( loading ){
-    return <LoadingComponent/>
-  }
-
   
   return (
     <>
       <Navbar handleNavigateToStart={()=>{}}/>
-      <main className={styles.character_page_container}>
-        <div className={styles.character_page_content}>
-          <div className={styles.image_container}>
-            <img className={styles.image} src={data?.character.image} alt={data?.character.name} />
-          </div>
-          <div className={styles.character_info_container}>
-            <p className={styles.character_status}>{data?.character.status}</p>
-            <h3 className={styles.character_name}>{data?.character.name}</h3>
-            <div className={styles.episodes_info_container}>
-              <p className={styles.episodes_label} >Episodes:</p>
-              <div ref={episodesText} className={styles.episodes}>
-                <p className={styles.episodes_text}>
-                  {
-                    data!.character.episode.map(episode=>episode.name).join(", ")
-                  }
+      {
+        loading ? <LoadingComponent/>  
+        :
+        <main className={styles.character_page_container}>
+          <div className={styles.character_page_content}>
+            <div className={styles.image_container}>
+              <img className={styles.image} src={data?.character.image} alt={data?.character.name} />
+            </div>
+            <div className={styles.character_info_container}>
+              <p className={styles.character_status}>{data?.character.status}</p>
+              <h3 className={styles.character_name}>{data?.character.name}</h3>
+              <div className={styles.episodes_info_container}>
+                <p className={styles.episodes_label} >Episodes:</p>
+                <div ref={episodesText} className={styles.episodes}>
+                  <p className={styles.episodes_text}>
+                    {
+                      data!.character.episode.map(episode=>episode.name).join(", ")
+                    }
+                  </p>
+                </div>
+                <p 
+                  className={[ data!.character.episode.map(episode=>episode.name).join(", ").length > 640 ? "show pointer" : "hide" , styles.ver_text ].join(" ")}
+                  onClick={handleVerMas}
+                >
+                  Ver mas...
                 </p>
               </div>
-              <p 
-                className={[ data!.character.episode.map(episode=>episode.name).join(", ").length > 640 ? "show pointer" : "hide" , styles.ver_text ].join(" ")}
-                onClick={handleVerMas}
-              >
-                Ver mas...
-              </p>
+              <div className={styles.button_container}>
+                <button
+                  onClick={()=>dispatch(setFavorites(id!))}
+                  className={[ styles.button_add_favorite, favorites.includes(id!) ? styles.button_active : styles.button_not_active ,"pointer" ].join(" ")}
+                >
+                  {
+                    favorites.includes(id!) ? "Favorite" : "Add Favorite"
+                  }
+                </button>
+              </div>
+              <div className={styles.created}>Created : {new Date(data?.character.created!).toLocaleDateString("es-PE")}</div>
             </div>
-            <div className={styles.button_container}>
-              <button
-                onClick={()=>dispatch(setFavorites(id!))}
-                className={[ styles.button_add_favorite, favorites.includes(id!) ? styles.button_active : styles.button_not_active ,"pointer" ].join(" ")}
-              >
-                {
-                  favorites.includes(id!) ? "Favorite" : "Add Favorite"
-                }
-              </button>
-            </div>
-            <div className={styles.created}>Created : {new Date(data?.character.created!).toLocaleDateString("es-PE")}</div>
           </div>
-        </div>
-      </main>
+        </main>
+      }
     </>
   )
 }
