@@ -13,6 +13,7 @@ import { DataCharacterById } from '../interfaces/charactersById';
 
 
 import styles from "../styles/pages/favoritesPage.module.css";
+import { LoadingComponent } from '../components/CharacterPage/LoadingComponents';
 
 export const FavoritesPage : FC = () => {
   const { favorites } = useSelector((store: RootState)=>store.rickMorty);
@@ -46,31 +47,29 @@ export const FavoritesPage : FC = () => {
     
   }, [error])
   
-  if( loading ){
-    return <h1 style={{
-      marginTop : "90px",
-      display:"grid",
-      placeItems : "center",
-    }}> Cargando... </h1>
-  } 
 
   return (
     <>
       <Navbar handleNavigateToStart={()=>{}}/>
-      <div className={styles.favorites_page_container}>
-        <div className={styles.favorites_page_content}>
+      
+      {
+        loading ? <LoadingComponent/> :
+        
+        <div className={styles.favorites_page_container}>
+          <div className={styles.favorites_page_content}>
 
-          {
-            favorites.length === 0 
-            ?
-            <h4>No hay Favoritos</h4>
-            :
-            data?.charactersByIds.map(character=>(
-              <CharacterCard key={character.id}  character={character}/>
-              ))
-          }
+            {
+              favorites.length === 0 
+              ?
+              <h4>No hay Favoritos</h4>
+              :
+              data?.charactersByIds.map(character=>(
+                <CharacterCard key={character.id}  character={character}/>
+                ))
+            }
+          </div>
         </div>
-      </div>
+      }
     </>
   )
 }

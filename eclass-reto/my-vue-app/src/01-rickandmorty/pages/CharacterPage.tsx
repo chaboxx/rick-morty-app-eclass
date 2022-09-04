@@ -60,7 +60,18 @@ export const CharacterPage : FC = () => {
     <>
       <Navbar handleNavigateToStart={()=>{}}/>
       {
-        loading ? <LoadingComponent/>  
+        loading 
+        ? 
+        <h5
+          style={{
+            marginTop: "100px",
+            display : "grid",
+            justifyContent : "center",
+            fontSize : "28px"
+          }}
+        >
+          Loading...
+        </h5>
         :
         <main className={styles.character_page_container}>
           <div className={styles.character_page_content}>
