@@ -26,7 +26,6 @@ export const FavoritesPage : FC = () => {
     fetchPolicy : "cache-first",
   });
 
-  console.log({error,data,loading,previousData});
   const favoritesWithNetwork : Result[] = useMemo(() => {
     if (!data){
       return previousData?.charactersByIds.filter(element=>favorites.includes( element.id )) || [];
@@ -55,9 +54,17 @@ export const FavoritesPage : FC = () => {
 
             {
               loading && favoritesWithNetwork.length === 0 ? 
-              <LoadingComponent/>
+              <h3
+                style={{
+                  fontSize : "28px",
+                  display : "grid",
+                  placeItems : "center",
+                }}
+              >
+                Loading...
+              </h3>
               :
-              favorites.length ===0 && favoritesWithNetwork.length === 0 
+              favoritesWithNetwork.length === 0 
               ?
               <h4>No hay Favoritos</h4>
               :
