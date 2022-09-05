@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { connect, Provider} from "react-redux";
+import { Provider } from "react-redux";
 
 import { MainRoutes } from "./routes/MainRoutes";
 

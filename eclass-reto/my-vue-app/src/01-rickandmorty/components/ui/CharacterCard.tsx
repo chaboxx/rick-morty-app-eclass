@@ -47,7 +47,7 @@ export const CharacterCard : FC<Props> = ({character}) => {
       </div>
       <div className={styles.information_item_container}>
 
-        <h5 className={styles.title}>{character.name}</h5>
+        <h5 role="character-name" className={styles.title}>{character.name}</h5>
       </div>
     </div>
   )

@@ -1,21 +1,21 @@
 import { FC, useEffect, useRef } from 'react';
+
 import { useParams } from 'react-router-dom';
 
 import { Navbar } from '../components/ui/Navbar';
-import { LoadingComponent } from '../components/CharacterPage/LoadingComponents';
 
 import { useQuery } from '@apollo/client';
 import { getCharacterData } from '../apollo/querys';
 
-import { DataCharacter } from '../interfaces/character';
 
 
-import styles from "../styles/pages/characterPage.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { setFavorites } from '../store/slices/rickMortyAppSlice';
 import { RootState } from '../store';
-import { Result } from '../interfaces/characters';
 
+import { DataCharacter } from '../interfaces/character';
+
+import styles from "../styles/pages/characterPage.module.css";
 
 export const CharacterPage : FC = () => {
 
@@ -38,7 +38,6 @@ export const CharacterPage : FC = () => {
     })
   }, []);
 
-  // const verRef = useRef<HTMLParagraphElement>(null);
   const episodesText = useRef<HTMLParagraphElement>(null);
   
   const handleVerMas = (e : React.MouseEvent<HTMLParagraphElement, MouseEvent> ) =>{
