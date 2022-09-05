@@ -14,6 +14,7 @@ import styles from "../styles/pages/characterPage.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { setFavorites } from '../store/slices/rickMortyAppSlice';
 import { RootState } from '../store';
+import { Result } from '../interfaces/characters';
 
 
 export const CharacterPage : FC = () => {
@@ -99,11 +100,11 @@ export const CharacterPage : FC = () => {
               </div>
               <div className={styles.button_container}>
                 <button
-                  onClick={()=>dispatch(setFavorites(id!))}
-                  className={[ styles.button_add_favorite, favorites.includes(id!) ? styles.button_active : styles.button_not_active ,"pointer" ].join(" ")}
+                  onClick={()=>dispatch(setFavorites(data?.character as Result))}
+                  className={[ styles.button_add_favorite, favorites.some(favorite => favorite.id === id) ? styles.button_active : styles.button_not_active ,"pointer" ].join(" ")}
                 >
                   {
-                    favorites.includes(id!) ? "Favorite" : "Add Favorite"
+                    favorites.some(favorite => favorite.id === id ) ? "Favorite" : "Add Favorite"
                   }
                 </button>
               </div>

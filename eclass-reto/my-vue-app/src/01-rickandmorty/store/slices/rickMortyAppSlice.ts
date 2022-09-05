@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Result } from '../../interfaces/characters';
 
 
 export interface RickMortyInitalState{
 
-  favorites : string[];
+  favorites : Result[];
   page : number;
 }
 
@@ -15,7 +16,7 @@ const initialState: RickMortyInitalState = {
 
 
 interface SetFavoritesAction {
-  payload: string; //ID Character
+  payload: Result; //ID Character
   type: string;
 }
 interface SetCurrentPage {
@@ -27,28 +28,32 @@ export const rickMorySlice = createSlice({
   initialState,
   reducers: {
     setInitalState( state : RickMortyInitalState ){
-      let favorites = localStorage.getItem("favorites");
+      
+      const favorites : Result[] = JSON.parse(localStorage.getItem("favorites") || "");
       if ( !favorites ){
         return;
       }
-      
-      if ( favorites.split(",").length > 0 ){
-        state.favorites = favorites.split(",");
+      const regExp = new RegExp("^[0-9]+$");
+      const favoritesCleaned : Result[] = favorites.filter(favorite=>regExp.test(favorite.id));
+      localStorage.setItem("favorites",JSON.stringify(favoritesCleaned));
+      if ( favoritesCleaned.length > 0 ){
+        
+        state.favorites = favoritesCleaned;
       }
+      
       
     },
     setFavorites( state : RickMortyInitalState , action  : SetFavoritesAction ){
       
 
-      const isRepeted = state.favorites.includes( action.payload );
-      
+      const isRepeted = state.favorites.some( favorite => favorite.id === action.payload.id );
       if ( !isRepeted ) {
         state.favorites.push(action.payload);
       }else{
-        state.favorites = state.favorites.filter( favorite => favorite !== action.payload );
+        state.favorites = state.favorites.filter( favorite => favorite.id !== action.payload.id );
       }
-
-      localStorage.setItem("favorites",state.favorites.join(","));
+      
+      localStorage.setItem("favorites",JSON.stringify(state.favorites));
     },
     setCurrentPage( state : RickMortyInitalState , action : SetCurrentPage ){
       state.page = action.payload;
