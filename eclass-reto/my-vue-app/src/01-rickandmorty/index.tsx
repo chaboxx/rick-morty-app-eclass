@@ -15,8 +15,6 @@ import "../index.css";
 export const RickAndMortyApp : FC = () => {
   
   return (
-    
- 
 
       <Provider store={store}>
         <ApolloProvider client={client}>

@@ -32,8 +32,8 @@ export const GridCards : FC<Props> = ({page}) => {
       return;
     }
     
-    refetch({
-      page : 1
+    refetch({ 
+      page,
     });
 
 
