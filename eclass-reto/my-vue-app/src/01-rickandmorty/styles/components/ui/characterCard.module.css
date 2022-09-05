@@ -8,6 +8,7 @@
   width: 300px;
   justify-self: center;
   box-shadow: 1px 1px 3px 1px rgb(0, 0, 0, 0.1);
+
 }
 
 
@@ -22,14 +23,12 @@
   top: 10px;
   right: 10px;
   text-align: center;
-  z-index: 9;
+
 }
 
 .add_favorite_icon_not_active{
   background-color: white;
-}
-.add_favorite_icon_active{
-  background-color: #eaa523;
+  color : black;
 }
 .add_favorite_icon_not_active::before{
   content: "+";
@@ -38,38 +37,31 @@
   height: 30px;
   font-size: 30px;
   font-weight: 700;
+  z-index: 99;
+
 }
+
+.add_favorite_icon_active{
+  background-color: #eaa523;
+  color: white;
+}
+
 .add_favorite_icon_active::before{
   content: "*";
   width: 30px;
-  color: #f5ead4;
+  color: white;
   height: 30px;
   font-size: 30px;
   font-weight: 700;
 }
 
-.add_favorite_icon_not_active:hover{
-  background-color: #eaa523;
-    
-}
-.add_favorite_icon_active:hover{
-  background-color: white;  
-
-}
-.add_favorite_icon_not_active:hover::before{
-  content: "*";
-  color: #f5ead4;
-}
-.add_favorite_icon_active:hover::before{
-  content: "+";
-  color: black;
-}
 /* END ICON */
 
 
 
 .image_container{
   display: grid;
+  z-index: -99;
 }
 .img_item{
   width: 300px;
@@ -85,7 +77,26 @@
 }
 
 /* Media Query */
-
+@media screen and ( min-width : 768px ){
+  /* ICON */
+  .add_favorite_icon_not_active:hover{
+    background-color: #eaa523;
+  }
+  
+  .add_favorite_icon_not_active:hover::before{
+    content: "*";
+    color: white;
+  }
+  .add_favorite_icon_active:hover{
+    background-color: white;
+  }
+  .add_favorite_icon_active:hover::before{
+    content: "+";
+    color: black;
+  }
+  /* END ICON */
+  
+}
 @media screen and ( max-width : 768px ){
   .data_item{
     width: 250px;
@@ -96,6 +107,7 @@
     height: 300px;
   
   }
+
 }
 
 

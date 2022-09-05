@@ -24,5 +24,3 @@ export const RickAndMortyApp : FC = () => {
     
   )
 }
-
-const connected = connect(store as any)(RickAndMortyApp);
