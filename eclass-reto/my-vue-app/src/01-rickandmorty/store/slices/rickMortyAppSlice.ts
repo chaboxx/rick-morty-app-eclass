@@ -4,7 +4,7 @@ import { Result } from '../../interfaces/characters';
 
 export interface RickMortyInitalState{
 
-  favorites : Result[];
+  favorites : string[];
   page : number;
 }
 
@@ -16,7 +16,7 @@ const initialState: RickMortyInitalState = {
 
 
 interface SetFavoritesAction {
-  payload: Result; //ID Character
+  payload: string; //ID Character
   type: string;
 }
 interface SetCurrentPage {
@@ -29,16 +29,16 @@ export const rickMorySlice = createSlice({
   reducers: {
     setInitalState( state : RickMortyInitalState ){
       
-      const favorites : Result[] = JSON.parse(localStorage.getItem("favorites") || "");
+      const favorites : string[] = JSON.parse(localStorage.getItem("favorites")!);
       if ( !favorites ){
         return;
       }
       const regExp = new RegExp("^[0-9]+$");
-      const favoritesCleaned : Result[] = favorites.filter(favorite=>regExp.test(favorite.id));
-      localStorage.setItem("favorites",JSON.stringify(favoritesCleaned));
+      const favoritesCleaned : string[] = favorites.filter(favorite=>regExp.test(favorite));
       if ( favoritesCleaned.length > 0 ){
-        
+        localStorage.setItem("favorites",JSON.stringify(favoritesCleaned));
         state.favorites = favoritesCleaned;
+        
       }
       
       
@@ -46,11 +46,11 @@ export const rickMorySlice = createSlice({
     setFavorites( state : RickMortyInitalState , action  : SetFavoritesAction ){
       
 
-      const isRepeted = state.favorites.some( favorite => favorite.id === action.payload.id );
+      const isRepeted = state.favorites.includes( action.payload );
       if ( !isRepeted ) {
         state.favorites.push(action.payload);
       }else{
-        state.favorites = state.favorites.filter( favorite => favorite.id !== action.payload.id );
+        state.favorites = state.favorites.filter( favorite => favorite !== action.payload );
       }
       
       localStorage.setItem("favorites",JSON.stringify(state.favorites));

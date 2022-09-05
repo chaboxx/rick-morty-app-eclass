@@ -13,21 +13,24 @@ import { DataCharacterById } from '../interfaces/charactersById';
 
 
 import styles from "../styles/pages/favoritesPage.module.css";
+import { Result } from '../interfaces/characters';
+import { LoadingComponent } from '../components/CharacterPage/LoadingComponents';
 
 export const FavoritesPage : FC = () => {
   const { favorites } = useSelector((store: RootState)=>store.rickMorty);
 
-  const { error, data , refetch } = useQuery<DataCharacterById>(getFavoritesQuery,{
+  const { loading, error, data , refetch ,previousData} = useQuery<DataCharacterById>(getFavoritesQuery,{
     variables : {
-      ids : favorites.filter(favorite=>new RegExp("^[0-9]+$").test(favorite.id)).map(favorite=>parseInt(favorite.id)), 
+      ids : favorites, 
     },
     fetchPolicy : "cache-first",
-    
   });
-  
-  const favoritesWithNetwork = useMemo(() => {
+
+  console.log({error,data,loading,previousData});
+  const favoritesWithNetwork : Result[] = useMemo(() => {
     if (!data){
-      return favorites.filter(element=>!!element.id);
+      return previousData?.charactersByIds.filter(element=>favorites.includes( element.id )) || [];
+
     }
     return data.charactersByIds.filter(element=>!!element.id);
   }, [favorites,data]);
@@ -51,6 +54,9 @@ export const FavoritesPage : FC = () => {
           <div className={styles.favorites_page_content}>
 
             {
+              loading && favoritesWithNetwork.length === 0 ? 
+              <LoadingComponent/>
+              :
               favorites.length ===0 && favoritesWithNetwork.length === 0 
               ?
               <h4>No hay Favoritos</h4>

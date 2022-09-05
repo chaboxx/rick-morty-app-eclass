@@ -22,9 +22,9 @@ export const CharacterCard : FC<Props> = ({character}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSetFavorite = ( e: React.MouseEvent<HTMLDivElement, MouseEvent>, character : Result )=>{
+  const handleSetFavorite = ( e: React.MouseEvent<HTMLDivElement, MouseEvent>, id : string )=>{
     e.stopPropagation();    
-    dispatch(setFavorites(character));
+    dispatch(setFavorites(id));
   }
 
 
@@ -37,8 +37,8 @@ export const CharacterCard : FC<Props> = ({character}) => {
       })}
     >
       <div
-        onClick={(e)=>handleSetFavorite(e,character)}
-        className={[styles.add_favorite_icon , favorites.some( favorite=> favorite.id === character.id ) ? styles.add_favorite_icon_active : styles.add_favorite_icon_not_active ].join(" ")}
+        onClick={(e)=>handleSetFavorite(e,character.id)}
+        className={[styles.add_favorite_icon , favorites.includes( character.id ) ? styles.add_favorite_icon_active : styles.add_favorite_icon_not_active ].join(" ")}
       >
       </div>
       <div className={styles.image_container}>
