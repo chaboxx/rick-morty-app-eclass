@@ -38,7 +38,7 @@ export const Navbar : FC<Props> = ({handleNavigateToStart}) => {
             })}
             className={[ styles.navbar_item , "pointer", pathname === "/favorites" ? styles.navbar_item_active : "" ].join(" ")}
           >
-            Favoritos { `(${ favorites.length })`} 
+            Favorites { `(${ favorites.length })`} 
           </li>
         </ul>
       </nav>

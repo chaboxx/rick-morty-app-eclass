@@ -1,4 +1,4 @@
-import { render, screen  } from "@testing-library/react";
+import { fireEvent, render, screen  } from "@testing-library/react";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -8,25 +8,24 @@ import client from "../apollo/apolloClient";
 import { Provider } from "react-redux";
 import store from "../store";
 
-import { CharacterCard } from "../components/ui/CharacterCard";
+import { AddFavoriteButtonComponent } from "../components/CharacterPage/AddFavoriteButtonComponent";
+
+import { Character } from "../interfaces/character";
 
 
 
-test("Renders Character Card Correctly",()=>{
+test("Add Favorite Button Component Works Correctly",()=>{
   const character = {
     id : "1", 
     image : "https://rick.png" , 
     name : "Rick Sanchez"
   };
-
-
-  
   render(
     <Provider store={store}>
       <ApolloProvider client={client}>
         
         <Routes>
-          <Route path="/" element={<CharacterCard character={character}/>}/>
+          <Route path="/" element={<AddFavoriteButtonComponent character={character as Character}/>}/>
         </Routes>
         
       </ApolloProvider>
@@ -36,8 +35,7 @@ test("Renders Character Card Correctly",()=>{
     } 
   );
 
-  const text = screen.getByRole("character-name");
-  const image = screen.getByAltText(character.name);
-  expect(text).toHaveTextContent(character.name); 
-  expect(image).toBeVisible();
+  const button = screen.getByText("Add Favorite");
+  fireEvent.click(button);
+  expect(button).toHaveTextContent("Favorite");
 })

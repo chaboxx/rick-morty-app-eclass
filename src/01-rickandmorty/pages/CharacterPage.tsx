@@ -3,32 +3,27 @@ import { FC, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Navbar } from '../components/ui/Navbar';
+import { AddFavoriteButtonComponent } from '../components/CharacterPage/AddFavoriteButtonComponent';
 
 import { useQuery } from '@apollo/client';
 import { getCharacterData } from '../apollo/querys';
 
 
-
-import { useDispatch, useSelector } from 'react-redux';
-import { setFavorites } from '../store/slices/rickMortyAppSlice';
-import { RootState } from '../store';
-
 import { DataCharacter } from '../interfaces/character';
+
 
 import styles from "../styles/pages/characterPage.module.css";
 
 export const CharacterPage : FC = () => {
 
   const { id } = useParams();
-  const { favorites } = useSelector((store:RootState)=>store.rickMorty);
   const { loading , error , data , refetch } = useQuery<DataCharacter>(getCharacterData,{
     variables : {
       id,
     },
   });
 
-  const dispatch = useDispatch();
-  
+
   useEffect(() => {
     if ( !error ){
       return;
@@ -84,7 +79,7 @@ export const CharacterPage : FC = () => {
               <div className={styles.episodes_info_container}>
                 <p className={styles.episodes_label} >Episodes:</p>
                 <div ref={episodesText} className={styles.episodes}>
-                  <p className={styles.episodes_text}>
+                  <p className={styles.episodes_text} role="character-description">
                     {
                       data!.character.episode.map(episode=>episode.name).join(", ")
                     }
@@ -98,14 +93,7 @@ export const CharacterPage : FC = () => {
                 </p>
               </div>
               <div className={styles.button_container}>
-                <button
-                  onClick={()=>dispatch(setFavorites(data?.character.id!))}
-                  className={[ styles.button_add_favorite, favorites.includes( id! ) ? styles.button_active : styles.button_not_active ,"pointer" ].join(" ")}
-                >
-                  {
-                    favorites.includes( id! ) ? "Favorite" : "Add Favorite"
-                  }
-                </button>
+                <AddFavoriteButtonComponent character={data?.character!}/>
               </div>
               <div className={styles.created}>Created : {new Date(data?.character.created!).toLocaleDateString("es-PE")}</div>
             </div>
