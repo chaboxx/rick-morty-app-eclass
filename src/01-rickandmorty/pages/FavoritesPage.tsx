@@ -14,7 +14,6 @@ import { DataCharacterById } from '../interfaces/charactersById';
 
 import styles from "../styles/pages/favoritesPage.module.css";
 import { Result } from '../interfaces/characters';
-import { LoadingComponent } from '../components/CharacterPage/LoadingComponents';
 
 export const FavoritesPage : FC = () => {
   const { favorites } = useSelector((store: RootState)=>store.rickMorty);

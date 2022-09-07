@@ -1,6 +1,6 @@
 import { render, screen  } from "@testing-library/react";
 
-import { CharacterCard } from "../components/ui/CharacterCard";
+import { FavoritesPage } from "../pages/FavoritesPage";
 
 import { RickAndMortyAppTesting } from "./TestingLayout";
 
@@ -11,8 +11,8 @@ test("Renders Character Card Correctly",()=>{
     name : "Rick Sanchez"
   };
 
-  render(<RickAndMortyAppTesting>
-    <CharacterCard character={character}/>
+  render(<RickAndMortyAppTesting path="/">
+    <FavoritesPage />
   </RickAndMortyAppTesting>);
 
   const text = screen.getByRole("character-name");

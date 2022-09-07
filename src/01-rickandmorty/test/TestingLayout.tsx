@@ -1,19 +1,18 @@
 import { FC, PropsWithChildren } from "react";
 
-import { Provider} from "react-redux";
-
-import "../index.css";
-import { MainRoutes } from "../routes/MainRoutes";
-import { ApolloProvider } from "@apollo/client";
-import client from "../apollo/apolloClient";
-import store from "../store";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import { Provider} from "react-redux";
+import store from "../store";
+
+import { ApolloProvider } from "@apollo/client";
+import client from "../apollo/apolloClient";
 
 interface Props extends PropsWithChildren{
-
+  // element : JSX.Element | JSX.Element[];
+  path: string;
 }
-export const RickAndMortyAppTesting : FC<Props> = ({children}) => {
+export const RickAndMortyAppTesting : FC<Props> = ({children,path}) => {
   
   return (
 
@@ -21,7 +20,7 @@ export const RickAndMortyAppTesting : FC<Props> = ({children}) => {
         <ApolloProvider client={client}>
           <BrowserRouter>
             <Routes>
-              <Route path="/*" element={children}/>
+              <Route path={path} element={children}/>
             </Routes>
           </BrowserRouter>
         </ApolloProvider>
